@@ -1,0 +1,146 @@
+body{
+    background: rgb(147, 227, 247);
+    font-family: Helvetica, Arial, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 10pt;
+    color: rgb(21, 44, 54);
+}
+
+.post{
+    background-color: white;
+    padding: 10px;
+    border-top: solid 1px rgb(213, 232, 248);
+}
+
+#timeline{
+    padding: 0px;
+    background-color: white;
+    border: solid rgb(113, 180, 235) 1px;
+    float: right;
+    width: 65%;
+}
+
+#header{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#bar{
+    float: left;
+    width: 30%;
+    text-align: center;
+}
+
+.barbox{
+    text-align: left;
+    background-color: rgb(198, 242, 255);
+    border: solid rgb(113, 180, 235) 1px;
+    padding: 10px;
+    width: 100%;
+    color: rgb(73, 104, 112);
+    margin-bottom: 10px ;
+}
+
+.barheader{
+    font-size: 150%;
+    font-weight: bold;
+}
+
+#textarea{
+    width: 97%;
+    height: 80px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.username, .date{
+    color: rgb(150, 173, 194);
+    font-size: 80%;
+}
+
+
+.profilelink{
+    text-decoration: none;
+}
+
+.displayname{
+    font-weight: bolder;
+    font-size: 150%;
+}
+
+.postimage{
+    width: 320px;
+    height: 240px;
+}
+
+#wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 800px;
+}
+
+#timelineheader{
+    font-size: 200%;
+    padding: 10px;
+    font-weight: bold;
+}
+.oddpost{
+    background-color: rgb(230, 251, 255);
+}
+
+.displaynamecontainer{
+    padding: 5px;
+    padding-left: 60px;
+}
+
+#username{
+    padding: 4px;
+    padding-left: 60px;
+    margin-bottom: 5px;
+}
+.profileheader{
+    width: 100%;
+}
+
+#usernameinput, #passwordinput{
+    width: 234px;
+    background-color: #ffffff;
+    border: solid rgb(113, 180, 235) 1px;
+}
+
+.signin div{
+    margin-top: 8px;
+}
+
+#logo{
+    margin-bottom: 10px ;
+}
+
+#signinsubmit{
+    display: block;
+    margin: 15px auto;
+}
+
+#newposttext{
+    width: 234px;
+    background-color: #ffffff;
+    border: solid rgb(113, 180, 235) 1px;
+}
+
+#profilepanedisplayname{
+    font-size: 170%;
+    font-weight: bold;
+}
+
+.postpfp{
+    width: 32px;
+    height: 32px;
+}
+
+.postpfpcontainer{
+    width: 32px;
+}
+
+.banner{
+    color:rgb(150, 173, 194);
+}
