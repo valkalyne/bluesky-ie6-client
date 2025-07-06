@@ -123,6 +123,7 @@ function refresh() {
     }
     if (auth) {
         XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=50", false)
+        XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
         XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
         XmlHttp.setRequestHeader("cache-control", "no-cache, no-store, max-age=0")
         XmlHttp.setRequestHeader("Expires", "Tue, 01 Jan 1980 1:00:00 GMT")
