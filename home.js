@@ -78,6 +78,9 @@ function refreshsession() {
 
 function refresh() {
     if (auth) {
+        document.getElementById("bar").removeChild(document.getElementById("signedout"))
+        document.getElementById("bar").style.display = "block"
+        refreshsession()
         var XmlHttp
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -87,14 +90,13 @@ function refresh() {
             // code for IE6, IE5
             XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
         }
-        refreshsession()
-        document.getElementById("bar").removeChild(document.getElementById("signedout"))
         loaduserinfo(XmlHttp)
     }
     else {
         document.getElementById("bar").removeChild(document.getElementById("signedin"))
+        document.getElementById("bar").style.display = "block"
     }
-    document.getElementById("bar").style.display = "block"
+    
 
     var XmlHttp
     if (window.XMLHttpRequest) {
@@ -114,7 +116,7 @@ function refresh() {
         XmlHttp.setRequestHeader("Pragma", "no-cache")
     }
     else {
-        XmlHttp.open("GET", "stupid.json", false)
+        XmlHttp.open("GET", "https://api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=30&lang=en", false)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     }
     XmlHttp.send(null);
