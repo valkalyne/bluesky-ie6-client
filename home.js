@@ -1,7 +1,14 @@
 var postcount = 0
 var feed
 var parsedfeed
-var auth = JSON.parse(getCookie("auth"))
+var auth
+try{
+    auth = JSON.parse(getCookie("auth"))
+}
+catch{  
+    
+}
+
 
 function repostbanner(name){
     var banner = document.createElement("table")
