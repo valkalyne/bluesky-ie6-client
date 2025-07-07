@@ -31,10 +31,17 @@ function login() {
         "identifier": document.getElementById("usernameinput").value,
         "password": document.getElementById("passwordinput").value
     }));
-    auth = JSON.parse(XmlHttp.responseText)
+    try{
+        auth = JSON.parse(XmlHttp.responseText)
+    }
+    catch(error){
+        alert("something has gone Horribly Wrong: " +error)
+    }
+    
     if (auth.active) {
         setCookie("auth", JSON.stringify(auth), 7)
-        location.reload()
+        alert("success! reload to login")
+        //location.reload()
     }
     else {
         alert(XmlHttp.responseText)
