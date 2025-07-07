@@ -12,7 +12,6 @@ catch(error){
     ;
 }
 
-
 function work() {
     showthings()
     setTimeout(refresh,100)
@@ -179,7 +178,7 @@ function post(){
         else{
             alert("post sent!")
             document.getElementById("timeline").innerHTML = "Loading..."
-            refreshtimeline()
+            setTimeout(refreshtimeline,100)
         }
     }
 }
