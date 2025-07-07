@@ -108,7 +108,7 @@ function refresh() {
         XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
     }
     if (auth) {
-        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=50", false)
+        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=30", false)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
         XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
         XmlHttp.setRequestHeader("cache-control", "no-cache, no-store, max-age=0")
@@ -116,7 +116,8 @@ function refresh() {
         XmlHttp.setRequestHeader("Pragma", "no-cache")
     }
     else {
-        XmlHttp.open("GET", "https://api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=30&lang=en", false)
+        XmlHttp.open("GET", "https://api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=10&lang=en", false)
+        //XmlHttp.open("GET", "stupid.json", false)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     }
     XmlHttp.send(null);
