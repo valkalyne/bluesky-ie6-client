@@ -6,7 +6,7 @@ var cursor
 var feedlength = 10
 
 try{
-    auth = JSON.parse(getCookie("auth"))
+    auth = JSON.parse($.jStorage.get("auth", null))
 }
 catch(error){  
     ;
@@ -43,7 +43,7 @@ function login() {
     
     if (auth.active) {
         try{
-            setCookie("auth", JSON.stringify(auth), 7)
+            $.jStorage.set("auth",JSON.stringify(auth))
         }
         catch(error){
             alert("FUCK :( "+error )
@@ -85,7 +85,7 @@ function refreshsession() {
         }
     }
     if (auth.active) {
-        setCookie("auth", JSON.stringify(auth), 7)
+        $.jStorage.set("auth",JSON.stringify(auth))
     }
     else {
         alert(XmlHttp.responseText)
@@ -133,32 +133,10 @@ function logout() {
     XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     XmlHttp.setRequestHeader("authorization", "Bearer " + auth.refreshJwt)
     XmlHttp.send(null);
-    setCookie("auth", "", -10)
+    $.jStorage.deleteKey("auth")
     location.reload()
 }
 
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=Strict"
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
 
 function loaduserinfo() {
     var XmlHttp
