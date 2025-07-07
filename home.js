@@ -54,8 +54,6 @@ function login() {
 }
 
 function refreshsession() {
-    document.getElementById("bar").removeChild(document.getElementById("signedout"))
-    document.getElementById("bar").style.display = "block"
     var XmlHttp
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -80,6 +78,8 @@ function refreshsession() {
 
 function refresh() {
     if (auth) {
+        document.getElementById("bar").removeChild(document.getElementById("signedout"))
+        document.getElementById("bar").style.display = "block"
         refreshsession()
         var XmlHttp
         if (window.XMLHttpRequest) {
@@ -96,39 +96,7 @@ function refresh() {
         document.getElementById("bar").removeChild(document.getElementById("signedin"))
         document.getElementById("bar").style.display = "block"
     }
-    
-
-    var XmlHttp
-    if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        XmlHttp = new XMLHttpRequest()
-    }
-    else {
-        // code for IE6, IE5
-        XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
-    }
-    if (auth) {
-        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=30&cursor="+getcurrentiso(), false)
-        XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
-        XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
-        XmlHttp.setRequestHeader("cache-control", "no-cache, no-store, max-age=0")
-        XmlHttp.setRequestHeader("Expires", "Tue, 01 Jan 1980 1:00:00 GMT")
-        XmlHttp.setRequestHeader("Pragma", "no-cache")
-        
-    }
-    else {
-        XmlHttp.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=10&lang=en", false)
-        //XmlHttp.open("GET", "stupid.json", false)
-        XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
-    }
-    XmlHttp.send(null);
-    feed = XmlHttp.responseText
-    parsedfeed = JSON.parse(feed)
-    postcount = 0
-    for (var i in parsedfeed.feed) {
-        htmlpost(parsedfeed.feed[i].post,parsedfeed.feed[i].reason,parsedfeed.feed[i].reply)
-        postcount += 1
-    }
+    refreshtimeline()
 }
 
 
@@ -200,6 +168,7 @@ function loaduserinfo() {
 
 
 function post(){
+    refreshsession()
     var XmlHttp
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -228,22 +197,57 @@ function post(){
         XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
         XmlHttp.send(JSON.stringify(post));
-        alert(XmlHttp.responseText)
         if (JSON.parse(XmlHttp.responseText).error){
             alert(JSON.parse(XmlHttp.responseText).message)
         }
         else{
             alert("post sent!")
-            location.reload()
+            refreshtimeline()
         }
     }
 }
 
+function refreshtimeline(){
+    document.getElementById("timeline").innerHTML = "Loading..."
+    refreshtimelinebuffer()
+}
 
-
-
-
-
+function refreshtimelinebuffer(){
+    if (auth){
+        refreshsession()
+    }
+    var XmlHttp
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        XmlHttp = new XMLHttpRequest()
+    }
+    else {
+        // code for IE6, IE5
+        XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+    if (auth) {
+        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=30&cursor="+getcurrentiso(), false)
+        XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
+        XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
+        XmlHttp.setRequestHeader("cache-control", "no-cache, no-store, max-age=0")
+        XmlHttp.setRequestHeader("Expires", "Tue, 01 Jan 1980 1:00:00 GMT")
+        XmlHttp.setRequestHeader("Pragma", "no-cache")
+    }
+    else {
+        XmlHttp.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=10&lang=en", false)
+        //XmlHttp.open("GET", "stupid.json", false)
+        XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
+    }
+    XmlHttp.send(null);
+    feed = XmlHttp.responseText
+    parsedfeed = JSON.parse(feed)
+    postcount = 0
+    document.getElementById("timeline").innerHTML = ""
+    for (var i in parsedfeed.feed) {
+        htmlpost(parsedfeed.feed[i].post,parsedfeed.feed[i].reason,parsedfeed.feed[i].reply)
+        postcount += 1
+    }
+}
 
 
 
