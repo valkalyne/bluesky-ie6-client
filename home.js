@@ -70,7 +70,20 @@ function refreshsession() {
     XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     XmlHttp.setRequestHeader("authorization", "Bearer " + auth.refreshJwt)
     XmlHttp.send(null);
-    auth = JSON.parse(XmlHttp.responseText)
+    try{
+        auth = JSON.parse(XmlHttp.responseText)
+    }
+    catch(error){
+        var status = XmlHttp.status
+        if (status = 403){
+            alert("session expired. please log in again")
+            auth = 
+            logout()
+        } 
+        else{
+            alert(XmlHttp.status)
+        }
+    }
     if (auth.active) {
         setCookie("auth", JSON.stringify(auth), 7)
     }
