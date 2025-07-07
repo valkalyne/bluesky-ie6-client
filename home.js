@@ -13,9 +13,9 @@ catch(error){
 }
 
 
-
 function work() {
-    refresh()
+    showthings()
+    setTimeout(refresh,100)
 }
 
 function login() {
@@ -94,27 +94,10 @@ function refreshsession() {
 
 function refresh() {
     if (auth) {
-        document.getElementById("bar").removeChild(document.getElementById("signedout"))
-        document.getElementById("timelineheader").removeChild(document.getElementById("welcome"))
-        document.getElementById("bar").style.display = "block"
         refreshsession()
-        var xhr
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xhr = new XMLHttpRequest()
-        }
-        else {
-            // code for IE6, IE5
-            xhr = new ActiveXObject("Microsoft.XMLHTTP")
-        }
-        loaduserinfo(xhr)
+        loaduserinfo()
     }
-    else {
-        document.getElementById("bar").removeChild(document.getElementById("signedin"))
-        document.getElementById("bar").style.display = "block"
-    }
-    document.getElementById("timeline").innerHTML = "Loading..."
-    refreshtimeline()
+    setTimeout(refreshtimeline, 100)
 }
 
 function logout() {
@@ -227,24 +210,17 @@ function refreshtimeline(){
         //xhr.open("GET", "stupid.json", false)
         xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     }
-    
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            feed = xhr.responseText
-            parsedfeed = JSON.parse(feed)
-            cursor = parsedfeed.cursor
-            postcount = 0
-            document.getElementById("timeline").innerHTML = ""
-            for (var i in parsedfeed.feed) {
-                postcount += 1
-                htmlpost(parsedfeed.feed[i].post,parsedfeed.feed[i].reason,parsedfeed.feed[i].reply)
-            }
-        }
-    }
     xhr.send(null);
+    feed = xhr.responseText
+    parsedfeed = JSON.parse(feed)
+    cursor = parsedfeed.cursor
+    postcount = 0
+    document.getElementById("timeline").innerHTML = ""
+    for (var i in parsedfeed.feed) {
+        htmlpost(parsedfeed.feed[i].post,parsedfeed.feed[i].reason,parsedfeed.feed[i].reply)
+        postcount += 1
+    }
 }
-
-
 
 function ShowMore(){
     if(cursor){
@@ -287,7 +263,16 @@ function ShowMore(){
     }
 }
 
-function bink(){
+function showthings(){
+    if (auth) {
+        document.getElementById("bar").removeChild(document.getElementById("signedout"))
+        document.getElementById("timelineheader").removeChild(document.getElementById("welcome"))
+        document.getElementById("bar").style.display = "block"
+    }
+    else {
+        document.getElementById("bar").removeChild(document.getElementById("signedin"))
+        document.getElementById("bar").style.display = "block"
+    }
     document.getElementById("timeline").innerHTML = "Loading..."
 }
 
