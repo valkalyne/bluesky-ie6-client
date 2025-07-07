@@ -58,21 +58,27 @@ function htmlpost(postdata, reason, reply) {
         post.appendChild(document.createElement("br"))
         if (postdata.embed.images) {
             for (var i in postdata.embed.images) {
-                var leimage = post.appendChild(document.createElement("img"))
+                var leimageparent = document.createElement("a")
+                var leimage = document.createElement("img")
                 leimage.src = postdata.embed.images[i].thumb
-                leimage.alt = postdata.embed.images[i].alt
-                leimage.title = postdata.embed.images[i].alt
                 leimage.className = "postimage"
+                leimageparent.appendChild(leimage)
+                post.appendChild(leimageparent)
+                leimageparent.href = postdata.embed.images[i].fullsize
+                leimageparent.target = "_blank"
             }
         }
         else if (postdata.embed.media) {
             if (postdata.embed.media.images){
                 for (var i in postdata.embed.media.images) {
-                    var leimage = post.appendChild(document.createElement("img"))
+                    var leimageparent = document.createElement("a")
+                    var leimage = document.createElement("img")
                     leimage.src = postdata.embed.media.images[i].thumb
-                    leimage.alt = postdata.embed.media.images[i].alt
-                    leimage.title = postdata.embed.media.images[i].alt
                     leimage.className = "postimage"
+                    leimageparent.appendChild(leimage)
+                    post.appendChild(leimageparent)
+                    leimageparent.href = postdata.embed.media.images[i].fullsize
+                    leimageparent.target = "_blank"
                 }
             }
             if (postdata.embed.record){
