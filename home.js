@@ -5,7 +5,7 @@ var auth
 try{
     auth = JSON.parse(getCookie("auth"))
 }
-catch{  
+catch(error){  
     ;
 }
 
