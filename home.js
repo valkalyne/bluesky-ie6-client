@@ -282,7 +282,7 @@ function loaduserinfo() {
         // code for IE6, IE5
         XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
     }
-    XmlHttp.open("GET", "https://api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=" + auth.handle, false)
+    XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.actor.getProfile?actor=" + auth.handle, false)
     XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
     XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     XmlHttp.send(null);
