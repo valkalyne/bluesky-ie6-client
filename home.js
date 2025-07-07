@@ -54,6 +54,8 @@ function login() {
 }
 
 function refreshsession() {
+    document.getElementById("bar").removeChild(document.getElementById("signedout"))
+    document.getElementById("bar").style.display = "block"
     var XmlHttp
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -78,8 +80,6 @@ function refreshsession() {
 
 function refresh() {
     if (auth) {
-        document.getElementById("bar").removeChild(document.getElementById("signedout"))
-        document.getElementById("bar").style.display = "block"
         refreshsession()
         var XmlHttp
         if (window.XMLHttpRequest) {
@@ -116,7 +116,7 @@ function refresh() {
         XmlHttp.setRequestHeader("Pragma", "no-cache")
     }
     else {
-        XmlHttp.open("GET", "https://api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=10&lang=en", false)
+        XmlHttp.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=10&lang=en", false)
         //XmlHttp.open("GET", "stupid.json", false)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     }
