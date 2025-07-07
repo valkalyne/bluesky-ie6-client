@@ -35,7 +35,7 @@ function login() {
         auth = JSON.parse(XmlHttp.responseText)
     }
     catch(error){
-        alert("something has gone Horribly Wrong: " +error)
+        alert("something has gone Horribly Wrong: " + error.message)
     }
     
     if (auth.active) {
@@ -234,7 +234,7 @@ function refreshtimelinebuffer(){
         XmlHttp.setRequestHeader("Pragma", "no-cache")
     }
     else {
-        XmlHttp.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=10&lang=en", false)
+        XmlHttp.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=3&lang=en", false)
         //XmlHttp.open("GET", "stupid.json", false)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     }

@@ -1,5 +1,5 @@
 body{
-    background: rgb(147, 227, 247);
+    background: rgb(147, 227, 247) url("background.png") repeat-x bottom fixed;
     font-family: Helvetica, Arial, Verdana, Geneva, Tahoma, sans-serif;
     font-size: 10pt;
     color: rgb(21, 44, 54);
@@ -11,7 +11,7 @@ body{
     border-top: solid 1px rgb(213, 232, 248);
 }
 
-#timeline{
+#page{
     padding: 0px;
     background-color: white;
     border: solid rgb(113, 180, 235) 1px;
@@ -82,11 +82,16 @@ body{
     width: 800px;
 }
 
-#timelineheader{
+.timelineheader{
     font-size: 200%;
-    padding: 10px;
+    margin-bottom: 100px;
     font-weight: bold;
 }
+
+#timelineheader{
+    padding: 10px;
+}
+
 .oddpost{
     background-color: rgb(230, 251, 255);
 }
