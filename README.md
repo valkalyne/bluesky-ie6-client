@@ -7,9 +7,9 @@ renders posts and thats it Sorry
 
 ## instructions
 
-u need somesort of webserver to run this on and something like [WebOne](https://github.com/atauenis/webone) to make Functional requests..
+u need somesort of webserver to run this on and something like [WebOne](https://github.com/atauenis/webone) to make Functional requests on IE7 and prior..
 
-you'll also have to enable accessing data sources across domains in inetcpl (Internet Options)!!!
+you'll also have to enable accessing data sources across domains in inetcpl (Internet Options) in IE9 and prior!!!
 
 if u were wondering it works a Lot Better in Modern Browsers ...
 
