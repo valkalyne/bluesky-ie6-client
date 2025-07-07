@@ -249,13 +249,13 @@ function ShowMore(){
             xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
         }
         xhr.send(null);
-        //feed = xhr.responseText
-        //parsedfeed = JSON.parse(feed)
-        //cursor = parsedfeed.cursor
-        //for (var i in parsedfeed.feed) {
-        //    htmlpost(parsedfeed.feed[i].post,parsedfeed.feed[i].reason,parsedfeed.feed[i].reply)
-        //    postcount += 1
-        //}
+        feed = xhr.responseText
+        parsedfeed = JSON.parse(feed)
+        cursor = parsedfeed.cursor
+        for (var i in parsedfeed.feed) {
+            htmlpost(parsedfeed.feed[i].post,parsedfeed.feed[i].reason,parsedfeed.feed[i].reply)
+            postcount += 1
+        }
     }
     else {
         alert("japed. Sorry")
