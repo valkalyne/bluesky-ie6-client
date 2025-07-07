@@ -73,6 +73,7 @@ body{
 .postimage{
     width: 320px;
     height: 240px;
+    border: solid 1px rgb(213, 232, 248);
 }
 
 #wrapper{
@@ -138,6 +139,7 @@ body{
 .postpfp{
     width: 32px;
     height: 32px;
+    border: solid 1px rgb(213, 232, 248);
 }
 
 .postpfpcontainer{

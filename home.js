@@ -20,7 +20,7 @@ function repostbanner(name){
     var text = document.createElement("td")
     wvgwbwgw.appendChild(iconparent)
     wvgwbwgw.appendChild(text)
-    text.innerText = "Reposted by " + name
+    text.innerText = "Reposted by" + name 
     var icon = document.createElement("img")
     icon.src = '/icons/arrow_refresh.png'
     iconparent.appendChild(icon)
