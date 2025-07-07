@@ -21,6 +21,24 @@ function repostbanner(name){
     return banner
 }
 
+function pinnedbanner(){
+    var banner = document.createElement("table")
+    var wvgwbwgw = document.createElement("tr")
+    var tbody = document.createElement("tbody")
+    banner.appendChild(tbody)
+    tbody.appendChild(wvgwbwgw)
+    var iconparent = document.createElement("td")
+    var text = document.createElement("td")
+    wvgwbwgw.appendChild(iconparent)
+    wvgwbwgw.appendChild(text)
+    text.innerText = "Pinned"
+    var icon = document.createElement("img")
+    icon.src = '/icons/anchor.png'
+    iconparent.appendChild(icon)
+    banner.className = "banner"
+    return banner
+}
+
 function replybanner(name){
     var banner = document.createElement("table")
     var wvgwbwgw = document.createElement("tr")
@@ -111,6 +129,7 @@ function refresh() {
     else {
         document.getElementById("bar").removeChild(document.getElementById("signedin"))
     }
+    document.getElementById("bar").style.display = "block"
 
     var XmlHttp
     if (window.XMLHttpRequest) {
@@ -186,7 +205,13 @@ function htmlpost(postdata, reason, reply) {
     postdate.innerText = postdata.record.createdAt
 
     if (reason){
-        post.appendChild(repostbanner(reason.by.handle))
+        if(reason.by){
+            post.appendChild(repostbanner(reason.by.handle))
+        }
+        else if(reason.type = "app.bsky.feed.defss#reasonPin"){
+            post.appendChild(pinnedbanner())
+        }
+
     }
     if (reply){
         post.appendChild(replybanner(reply.parent.author.handle))
@@ -227,6 +252,7 @@ function htmlpost(postdata, reason, reply) {
     }
     post.appendChild(document.createElement("br"))
     post.appendChild(postdate)
+    post.appendChild(postfooter(postdata))
     document.getElementById("timeline").appendChild(post)
 
 }
@@ -287,7 +313,7 @@ function loaduserinfo() {
     XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     XmlHttp.send(null);
     var myprofile = JSON.parse(XmlHttp.responseText)
-    document.getElementById("profilepaneusername").textContent = myprofile.handle
+    document.getElementById("profilepaneusername").innerText = myprofile.handle
     document.getElementById("mypfp").src = myprofile.avatar
     document.getElementById("profilepanedisplayname").innerText = myprofile.displayName
     document.getElementById("followercount").innerText = myprofile.followersCount + " Followers"
@@ -313,7 +339,59 @@ function post(){
 }
 
 
+function postfooter(postdata){
+    var footertable = document.createElement("table")
+    var footertabletbody = document.createElement("tbody")
+    footertable.appendChild(footertabletbody)
+    var footertabletr = document.createElement("tr")
+    footertabletbody.appendChild(footertabletr)
 
+    //----------------------------------------------------
+
+    var likeimageparent = document.createElement("td")
+    var likeimage = document.createElement("img")
+    likeimage.src = "/icons/heart_add.png"
+
+    var footerlikes = document.createElement("td")
+    likeimageparent.appendChild(likeimage)
+    footerlikes.appendChild(document.createTextNode(postdata.likeCount + " Likes"))
+
+    footertabletr.appendChild(likeimageparent)
+    footertabletr.appendChild(footerlikes)
+    
+    //-----------------------------------------------------
+
+    //----------------------------------------------------
+
+    var repostimageparent = document.createElement("td")
+    var repostimage = document.createElement("img")
+    repostimage.src = "/icons/arrow_refresh.png"
+
+    var footerreposts = document.createElement("td")
+    repostimageparent.appendChild(repostimage)
+    footerreposts.appendChild(document.createTextNode(postdata.repostCount+postdata.quoteCount))
+
+    footertabletr.appendChild(repostimageparent)
+    footertabletr.appendChild(footerreposts)
+    
+    //-----------------------------------------------------
+
+    //----------------------------------------------------
+
+    var commentimageparent = document.createElement("td")
+    var commentimage = document.createElement("img")
+    commentimage.src = "/icons/comments.png"
+
+    var footercomments = document.createElement("td")
+    commentimageparent.appendChild(commentimage)
+    footercomments.appendChild(document.createTextNode(postdata.replyCount))
+
+    footertabletr.appendChild(commentimageparent)
+    footertabletr.appendChild(footercomments)
+    
+    //-----------------------------------------------------
+    return footertable
+}
 
 
 

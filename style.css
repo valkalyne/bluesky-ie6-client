@@ -28,6 +28,9 @@ body{
     float: left;
     width: 30%;
     text-align: center;
+    display: none;
+    position: sticky;
+    top: 10px;
 }
 
 .barbox{
