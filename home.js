@@ -2,6 +2,9 @@ var postcount = 0
 var feed
 var parsedfeed
 var auth
+var cursor
+var feedlength = 10
+
 try{
     auth = JSON.parse(getCookie("auth"))
 }
@@ -79,6 +82,7 @@ function refreshsession() {
 function refresh() {
     if (auth) {
         document.getElementById("bar").removeChild(document.getElementById("signedout"))
+        document.getElementById("timelineheader").removeChild(document.getElementById("welcome"))
         document.getElementById("bar").style.display = "block"
         refreshsession()
         var XmlHttp
@@ -226,7 +230,7 @@ function refreshtimelinebuffer(){
         XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
     }
     if (auth) {
-        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=10&cursor="+getcurrentiso(), false)
+        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit="+feedlength+"&cursor="+getcurrentiso(), false)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
         XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
         XmlHttp.setRequestHeader("cache-control", "no-cache, no-store, max-age=0")
@@ -234,13 +238,14 @@ function refreshtimelinebuffer(){
         XmlHttp.setRequestHeader("Pragma", "no-cache")
     }
     else {
-        XmlHttp.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=3&lang=en", false)
+        XmlHttp.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit="+feedlength+"&lang=en", false)
         //XmlHttp.open("GET", "stupid.json", false)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     }
     XmlHttp.send(null);
     feed = XmlHttp.responseText
     parsedfeed = JSON.parse(feed)
+    cursor = parsedfeed.cursor
     postcount = 0
     document.getElementById("timeline").innerHTML = ""
     for (var i in parsedfeed.feed) {
@@ -249,6 +254,46 @@ function refreshtimelinebuffer(){
     }
 }
 
+function ShowMore(){
+    if(cursor){
+        if (auth){
+            refreshsession()
+        }
+        var XmlHttp
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            XmlHttp = new XMLHttpRequest()
+        }
+        else {
+            // code for IE6, IE5
+            XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
+        }
+        if (auth) {
+            XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit="+feedlength+"&cursor="+cursor, false)
+            XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
+            XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
+            XmlHttp.setRequestHeader("cache-control", "no-cache, no-store, max-age=0")
+            XmlHttp.setRequestHeader("Expires", "Tue, 01 Jan 1980 1:00:00 GMT")
+            XmlHttp.setRequestHeader("Pragma", "no-cache")
+        }
+        else {
+            XmlHttp.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit="+feedlength+"&lang=en&cursor="+cursor, false)
+            //XmlHttp.open("GET", "stupid.json", false)
+            XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
+        }
+        XmlHttp.send(null);
+        feed = XmlHttp.responseText
+        parsedfeed = JSON.parse(feed)
+        cursor = parsedfeed.cursor
+        for (var i in parsedfeed.feed) {
+            htmlpost(parsedfeed.feed[i].post,parsedfeed.feed[i].reason,parsedfeed.feed[i].reply)
+            postcount += 1
+        }
+    }
+    else {
+        alert("japed. Sorry")
+    }
+}
 
 
 

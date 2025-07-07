@@ -153,3 +153,14 @@ body{
 .banner{
     color:rgb(150, 173, 194);
 }
+
+#showmoreparent{
+    background-color: white;
+    padding: 10px;
+    border-top: solid 1px rgb(213, 232, 248);
+}
+
+#showmore{
+    display: block;
+    margin: 15px auto;
+}
