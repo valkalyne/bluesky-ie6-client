@@ -226,7 +226,7 @@ function refreshtimelinebuffer(){
         XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
     }
     if (auth) {
-        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=30&cursor="+getcurrentiso(), false)
+        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=10&cursor="+getcurrentiso(), false)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
         XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
         XmlHttp.setRequestHeader("cache-control", "no-cache, no-store, max-age=0")
