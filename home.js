@@ -39,12 +39,17 @@ function login() {
     }
     
     if (auth.active) {
-        setCookie("auth", JSON.stringify(auth), 7)
-        alert("success! reload to login")
-        //location.reload()
+        try{
+            setCookie("auth", JSON.stringify(auth), 7)
+        }
+        catch(error){
+            alert("FUCK :( "+error )
+        }
+        //alert("success! reload to login")
+        location.reload()
     }
     else {
-        alert(XmlHttp.responseText)
+        alert(JSON.parse(XmlHttp.responseText).message)
     }
 }
 
