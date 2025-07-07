@@ -14,4 +14,5 @@ you'll also have to enable accessing data sources across domains in inetcpl (Int
 if u were wondering it works a Lot Better in Modern Browsers ...
 
 ## credits
-[Silk Icons by famfamfam](https://github.com/legacy-icons/famfamfam-silk)
+[Silk Icons](https://github.com/legacy-icons/famfamfam-silk)
+[jStorage](https://github.com/andris9/jStorage)

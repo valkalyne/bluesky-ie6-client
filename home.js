@@ -116,9 +116,6 @@ function refresh() {
     refreshtimeline()
 }
 
-
-
-
 function logout() {
     var XmlHttp
     if (window.XMLHttpRequest) {
