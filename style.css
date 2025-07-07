@@ -72,7 +72,7 @@ body{
 
 .postimage{
     width: 320px;
-    height: 240px;
+    height: auto;
     border: solid 1px rgb(213, 232, 248);
 }
 
