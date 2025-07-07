@@ -3,6 +3,7 @@
 
 <head>
     <script src='json2.js'></script>
+    <script src='iso.js'></script>
     <script src='renderposts.js'></script>
     <script src='home.js'></script>
     <link rel='stylesheet' href='style.css'>
@@ -109,7 +110,7 @@
                         <textarea name="newpost" id="newposttext" maxlength="300" cols="27" rows="4"></textarea>
                         <br>
                         <div>
-                            <button id="sendpost">Post</button>
+                            <button id="sendpost" onclick="post()">Post</button>
                         </div>
                     </div>
                 </div>

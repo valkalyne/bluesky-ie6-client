@@ -10,9 +10,9 @@ catch(error){
 }
 
 
+
 function work() {
     refresh()
-
 }
 
 function login() {
@@ -108,12 +108,13 @@ function refresh() {
         XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
     }
     if (auth) {
-        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=30", false)
+        XmlHttp.open("GET", "https://bsky.social/xrpc/app.bsky.feed.getTimeline?limit=30&cursor="+getcurrentiso(), false)
         XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
         XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
         XmlHttp.setRequestHeader("cache-control", "no-cache, no-store, max-age=0")
         XmlHttp.setRequestHeader("Expires", "Tue, 01 Jan 1980 1:00:00 GMT")
         XmlHttp.setRequestHeader("Pragma", "no-cache")
+        
     }
     else {
         XmlHttp.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit=10&lang=en", false)
@@ -208,10 +209,34 @@ function post(){
         // code for IE6, IE5
         XmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
     }
-    XmlHttp.open("GET", "https://api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=" + auth.handle, false)
-    XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
-    XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
-    XmlHttp.send(null);
+
+    var post = {
+        "collection": "app.bsky.feed.post",
+        "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": getcurrentiso(),
+            "text": document.getElementById("newposttext").value
+        },
+        "repo": auth.handle
+    }
+
+    if (!document.getElementById("newposttext").value){
+        alert("Write something!")
+    }
+    else{
+        XmlHttp.open("POST", "https://bsky.social/xrpc/com.atproto.repo.createRecord", false)
+        XmlHttp.setRequestHeader("authorization", "Bearer " + auth.accessJwt)
+        XmlHttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
+        XmlHttp.send(JSON.stringify(post));
+        alert(XmlHttp.responseText)
+        if (JSON.parse(XmlHttp.responseText).error){
+            alert(JSON.parse(XmlHttp.responseText).message)
+        }
+        else{
+            alert("post sent!")
+            location.reload()
+        }
+    }
 }
 
 
