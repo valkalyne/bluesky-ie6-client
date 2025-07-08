@@ -92,6 +92,8 @@ function refreshsession() {
 }
 
 function refresh() {
+    document.getElementById("timeline").innerHTML = "Loading..."
+    setTimeout(donothing, 100)
     if (auth) {
         refreshsession()
         loaduserinfo()
@@ -184,9 +186,6 @@ function post(){
 }
 
 function refreshtimeline(){
-    if (auth){
-        refreshsession()
-    }
     var xhr
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -270,12 +269,16 @@ function showthings(){
     }
     else {
         document.getElementById("bar").removeChild(document.getElementById("signedin"))
+        document.getElementById("timelineheader").removeChild(document.getElementById("timelinecontrols"))
+        document.getElementById("timelineheader").removeChild(document.getElementById("feedname"))
         document.getElementById("bar").style.display = "block"
     }
     document.getElementById("timeline").innerHTML = "Loading..."
 }
 
 
-
+function donothing(){
+    ;
+}
 
 
