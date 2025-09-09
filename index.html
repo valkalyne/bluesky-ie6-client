@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <script src='json2.js'></script>
-    <script src='iso.js'></script>
-    <script src='jstorage.min.js'></script>
-    <script src='renderposts.js'></script>
-    <script src='home.js'></script>
-    <link rel='stylesheet' href='style.css'>
+    <script src='/json2.js'></script>
+    <script src='/iso.js'></script>
+    <script src='/jstorage.min.js'></script>
+    <script src='/renderposts.js'></script>
+    <script src='/home.js'></script>
+    <link rel='stylesheet' href='/style.css'>
     <title>Bluesky</title>
 </head>
 
@@ -21,7 +21,7 @@
     </div>
     <div id='main'>
         <div id='bar'>
-            <img src="logosolid.png" id="logo">
+            <img src="/img/logosolid.png" id="logo">
             <div id="signedout">
                 <div class="barbox signedout" id="signinpane">
                     <span class="barheader">Sign in to Bluesky</span>
@@ -56,7 +56,7 @@
                     <table>
                         <tr>
                             <td>
-                                <img id="mypfp" src="fat ralph.jpg" width="48" height="48">
+                                <img id="mypfp" src="/img/fat ralph.jpg" width="48" height="48">
                             </td>
                             <td>
                                 <span id="profilepanedisplayname">Loading...</span>
@@ -74,6 +74,9 @@
                         </tr>
                         <tr>
                             <td id="postcount">0 Posts</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" onclick="logout()">Log Out</a></td>
                         </tr>
                     </table>
                 </div>
@@ -96,12 +99,12 @@
                             <td><a href="/">Messages</a></td>
                         </tr>
                         <tr>
-                            <td><img src="/icons/cog.png" alt=""></td>
-                            <td><a href="/">Settings</a></td>
+                            <td><img src="/icons/book_open.png" alt=""></td>
+                            <td><a href="/">Bookmarks</a></td>
                         </tr>
                         <tr>
-                            <td><img src="/icons/door_open.png" alt=""></td>
-                            <td><a href="#" onclick="logout()">Log Out</a></td>
+                            <td><img src="/icons/cog.png" alt=""></td>
+                            <td><a href="/">Settings</a></td>
                         </tr>
                     </table>
                 </div>

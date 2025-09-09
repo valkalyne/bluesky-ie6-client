@@ -1,5 +1,5 @@
 body{
-    background: rgb(147, 227, 247) url("background.png") repeat-x bottom fixed;
+    background: rgb(147, 227, 247) url("/img/background.png") repeat-x bottom fixed;
     font-family: Helvetica, Arial, Verdana, Geneva, Tahoma, sans-serif;
     font-size: 10pt;
     color: rgb(21, 44, 54);
@@ -29,6 +29,7 @@ body{
     width: 240px;
     text-align: center;
     display: none;
+    /*IE6 doesnt support this but im keeping it anyway since its better for Every Other Browser*/
     position: fixed;
     top: 10px;
 }
