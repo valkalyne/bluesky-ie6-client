@@ -26,10 +26,10 @@ body{
 
 #bar{
     float: left;
-    width: 30%;
+    width: 240px;
     text-align: center;
     display: none;
-    position: sticky;
+    position: fixed;
     top: 10px;
 }
 
@@ -76,7 +76,7 @@ body{
     border: solid 1px rgb(213, 232, 248);
 }
 
-#wrapper{
+#main{
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;

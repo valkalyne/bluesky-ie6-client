@@ -19,120 +19,118 @@
         <img src="/icons/arrow_refresh.png">
         <img src="/icons/comments.png">
     </div>
-    <div id='wrapper'>
-        <div id='main'>
-            <div id='bar'>
-                <img src="logosolid.png" id="logo">
-                <div id="signedout">
-                    <div class="barbox signedout" id="signinpane">
-                        <span class="barheader">Sign in to Bluesky</span>
-                        <br>
-                        <label>Join the conversation</label>
-                        <form class="signin">
-                            <div>
-                                <label>Username</label>
-                                <br>
-                                <input id="usernameinput">
-                            </div>
-                            <div>
-                                <label>Password</label>
-                                <br>
-                                <input id="passwordinput" type="password">
-                            </div>
-                            <div>
-                                <button id="signinsubmit" onclick="login()">Sign In</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="barbox">
-                        <label>All processing is done on device. the only requests made are to and from Bluesky's API.
-                            <br>
-                            <br>
-                            If you're using IE6-IE9 and you recieve an "Access Denied" error or the page refreshes without signing in, try adding this site to your Trusted Sites and enabling "Access data sources across domains"
-                        </label>
-                    </div>
-                </div>
-                <div id="signedin">
-                    <div class="barbox signedin" id="profilepane">
-                        <table>
-                            <tr>
-                                <td>
-                                    <img id="mypfp" src="fat ralph.jpg" width="48" height="48">
-                                </td>
-                                <td>
-                                    <span id="profilepanedisplayname">Loading...</span>
-                                    <br>
-                                    <span id="profilepaneusername">loading</span>
-                                </td>
-                            </tr>
-                        </table>
-                        <table>
-                            <tr>
-                                <td id="followercount">0 Followers</td>
-                            </tr>
-                            <tr>
-                                <td id="followingcount">0 Following</td>
-                            </tr>
-                            <tr>
-                                <td id="postcount">0 Posts</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="barbox signedin" id="navigation">
-                        <table>
-                            <tr>
-                                <td><img src="/icons/house.png" alt=""></td>
-                                <td><a href="/">Home</a></td>
-                            </tr>
-                            <tr>
-                                <td><img src="/icons/user.png" alt=""></td>
-                                <td><a href="/">My Profile</a></td>
-                            </tr>
-                            <tr>
-                                <td><img src="/icons/bell.png" alt=""></td>
-                                <td><a href="/">Notifications</a></td>
-                            </tr>
-                            <tr>
-                                <td><img src="/icons/email.png" alt=""></td>
-                                <td><a href="/">Messages</a></td>
-                            </tr>
-                            <tr>
-                                <td><img src="/icons/cog.png" alt=""></td>
-                                <td><a href="/">Settings</a></td>
-                            </tr>
-                            <tr>
-                                <td><img src="/icons/door_open.png" alt=""></td>
-                                <td><a href="#" onclick="logout()">Log Out</a></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="barbox signedin" id="postbox">
-                        <span class="barheader">What's on your mind?</span>
-                        <textarea name="newpost" id="newposttext" maxlength="300" cols="27" rows="4"></textarea>
-                        <br>
+    <div id='main'>
+        <div id='bar'>
+            <img src="logosolid.png" id="logo">
+            <div id="signedout">
+                <div class="barbox signedout" id="signinpane">
+                    <span class="barheader">Sign in to Bluesky</span>
+                    <br>
+                    <label>Join the conversation</label>
+                    <form class="signin">
                         <div>
-                            <button id="sendpost" onclick="post()">Post</button>
+                            <label>Username</label>
+                            <br>
+                            <input id="usernameinput">
                         </div>
+                        <div>
+                            <label>Password</label>
+                            <br>
+                            <input id="passwordinput" type="password">
+                        </div>
+                        <div>
+                            <button id="signinsubmit" onclick="login()">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="barbox">
+                    <label>All processing is done on device. the only requests made are to and from Bluesky's API.
+                        <br>
+                        <br>
+                        If you're using IE6-IE9 and you recieve an "Access Denied" error or the page refreshes without signing in, try adding this site to your Trusted Sites and enabling "Access data sources across domains"
+                    </label>
+                </div>
+            </div>
+            <div id="signedin">
+                <div class="barbox signedin" id="profilepane">
+                    <table>
+                        <tr>
+                            <td>
+                                <img id="mypfp" src="fat ralph.jpg" width="48" height="48">
+                            </td>
+                            <td>
+                                <span id="profilepanedisplayname">Loading...</span>
+                                <br>
+                                <span id="profilepaneusername">loading</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td id="followercount">0 Followers</td>
+                        </tr>
+                        <tr>
+                            <td id="followingcount">0 Following</td>
+                        </tr>
+                        <tr>
+                            <td id="postcount">0 Posts</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="barbox signedin" id="navigation">
+                    <table>
+                        <tr>
+                            <td><img src="/icons/house.png" alt=""></td>
+                            <td><a href="/">Home</a></td>
+                        </tr>
+                        <tr>
+                            <td><img src="/icons/user.png" alt=""></td>
+                            <td><a href="/">My Profile</a></td>
+                        </tr>
+                        <tr>
+                            <td><img src="/icons/bell.png" alt=""></td>
+                            <td><a href="/">Notifications</a></td>
+                        </tr>
+                        <tr>
+                            <td><img src="/icons/email.png" alt=""></td>
+                            <td><a href="/">Messages</a></td>
+                        </tr>
+                        <tr>
+                            <td><img src="/icons/cog.png" alt=""></td>
+                            <td><a href="/">Settings</a></td>
+                        </tr>
+                        <tr>
+                            <td><img src="/icons/door_open.png" alt=""></td>
+                            <td><a href="#" onclick="logout()">Log Out</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="barbox signedin" id="postbox">
+                    <span class="barheader">What's on your mind?</span>
+                    <textarea name="newpost" id="newposttext" maxlength="300" cols="27" rows="4"></textarea>
+                    <br>
+                    <div>
+                        <button id="sendpost" onclick="post()">Post</button>
                     </div>
                 </div>
             </div>
-            <div id='page'>
-                <div id='timelineheader'>
-                    <div id='welcome'>
-                    <span class="timelineheader">Welcome to the <i>social internet.</i></span>
-                    <br>
-                    Bluesky is <b>social media as it should be.</b> Find your community among millions of users, unleash your creativity, <b>and have some fun again.</b>
-                    </div>
-                    <div id="feedname" class="timelineheader">Following</div>
-                    <div id="timelinecontrols">
-                        <a href="javascript:void(0)" onclick="refresh()">Refresh</a>
-                    </div>
+        </div>
+        <div id='page'>
+            <div id='timelineheader'>
+                <div id='welcome'>
+                <span class="timelineheader">Welcome to the <i>social internet.</i></span>
+                <br>
+                Bluesky is <b>social media as it should be.</b> Find your community among millions of users, unleash your creativity, <b>and have some fun again.</b>
                 </div>
-                <div id='timeline'>
+                <div id="feedname" class="timelineheader">Following</div>
+                <div id="timelinecontrols">
+                    <a href="javascript:void(0)" onclick="refresh()">Refresh</a>
                 </div>
-                <div id="showmoreparent">
-                    <a href="javascript:void(0)" onclick="ShowMore()">Show More</a>
-                </div>
+            </div>
+            <div id='timeline'>
+            </div>
+            <div id="showmoreparent">
+                <a href="javascript:void(0)" onclick="ShowMore()">Show More</a>
             </div>
         </div>
     </div>
