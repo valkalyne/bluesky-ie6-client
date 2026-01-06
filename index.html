@@ -8,20 +8,18 @@
     <script src='/renderposts.js'></script>
     <script src='/home.js'></script>
     <link rel='stylesheet' href='/style.css'>
-    <title>Bluesky</title>
+    <title>Home - Bluesky</title>
 </head>
 
 <body onload='work()'>
-    <div id="imagecache" style="display: none;">
-        <!--LOAD MY FUCKING IMAGES!!!-->
-        <img src="/icons/heart_add.png">
-        <img src="/icons/heart_delete.png">
-        <img src="/icons/arrow_refresh.png">
-        <img src="/icons/comments.png">
-    </div>
     <div id='main'>
         <div id='bar'>
             <img src="/img/logosolid.png" id="logo">
+            <form id="search">
+                <input type="text">
+                <input type="submit" value="Search">
+            </form>
+
             <div id="signedout">
                 <div class="barbox signedout" id="signinpane">
                     <span class="barheader">Sign in to Bluesky</span>
@@ -51,6 +49,7 @@
                     </label>
                 </div>
             </div>
+
             <div id="signedin">
                 <div class="barbox signedin" id="profilepane">
                     <table>
@@ -62,33 +61,17 @@
                                 <span id="profilepanedisplayname">Loading...</span>
                                 <br>
                                 <span id="profilepaneusername">loading</span>
+                                <br>
+                                <a href="#" onclick="logout()">Log Out</a>
                             </td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <td id="followercount">0 Followers</td>
-                        </tr>
-                        <tr>
-                            <td id="followingcount">0 Following</td>
-                        </tr>
-                        <tr>
-                            <td id="postcount">0 Posts</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#" onclick="logout()">Log Out</a></td>
                         </tr>
                     </table>
                 </div>
                 <div class="barbox signedin" id="navigation">
                     <table>
-                        <tr>
+                        <tr  class="active">
                             <td><img src="/icons/house.png" alt=""></td>
                             <td><a href="/">Home</a></td>
-                        </tr>
-                        <tr>
-                            <td><img src="/icons/user.png" alt=""></td>
-                            <td><a href="/">My Profile</a></td>
                         </tr>
                         <tr>
                             <td><img src="/icons/bell.png" alt=""></td>
@@ -100,7 +83,7 @@
                         </tr>
                         <tr>
                             <td><img src="/icons/book_open.png" alt=""></td>
-                            <td><a href="/">Bookmarks</a></td>
+                            <td><a href="/">Saved Posts</a></td>
                         </tr>
                         <tr>
                             <td><img src="/icons/cog.png" alt=""></td>
@@ -108,28 +91,42 @@
                         </tr>
                     </table>
                 </div>
-                <div class="barbox signedin" id="postbox">
+                <div class="barbox signedin">
+                    <span class="barheader">Following</span>
+                    <span id="followingcount" class="barsubheader">...</span>
+                </div>
+                <div class="barbox signedin">
+                    <span class="barheader">Followers</span>
+                    <span id="followercount" class="barsubheader">...</span>
+                </div>
+            </div>
+
+            <p>more like copygay info</p>
+
+        </div>
+        
+        <div id='page'>
+            <div id='timelineheader' class="box">
+                <div id='welcome'>
+                <span class="timelineheader">Welcome to the <i>social internet.</i></span>
+                <br>
+                Bluesky is <b>social media as it should be.</b> Find your community among millions of users, unleash your creativity, <b>and have some fun again.</b>
+                </div>
+
+                <span id="feedname" class="timelineheader">Following</span>
+                <div id="timelinecontrols">
+                    <a href="javascript:void(0)" onclick="refresh()">Refresh</a>
+                </div>
+            </div>
+                <div class="signedin box" id="postbox">
                     <span class="barheader">What's on your mind?</span>
+                    <br>
                     <textarea name="newpost" id="newposttext" maxlength="300" cols="27" rows="4"></textarea>
                     <br>
                     <div>
                         <button id="sendpost" onclick="post()">Post</button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div id='page'>
-            <div id='timelineheader'>
-                <div id='welcome'>
-                <span class="timelineheader">Welcome to the <i>social internet.</i></span>
-                <br>
-                Bluesky is <b>social media as it should be.</b> Find your community among millions of users, unleash your creativity, <b>and have some fun again.</b>
-                </div>
-                <div id="feedname" class="timelineheader">Following</div>
-                <div id="timelinecontrols">
-                    <a href="javascript:void(0)" onclick="refresh()">Refresh</a>
-                </div>
-            </div>
             <div id='timeline'>
             </div>
             <div id="showmoreparent">

@@ -1,20 +1,19 @@
 body{
-    background: rgb(147, 227, 247) url("/img/background.png") repeat-x bottom fixed;
+    background: #93e3f7 url("/img/background.png") repeat-x bottom fixed;
     font-family: Helvetica, Arial, Verdana, Geneva, Tahoma, sans-serif;
     font-size: 10pt;
     color: rgb(21, 44, 54);
 }
 
 .post{
-    background-color: white;
-    padding: 10px;
-    border-top: solid 1px rgb(213, 232, 248);
+    background-color: rgb(230, 251, 255);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: solid rgb(113, 180, 235) 1px;
 }
 
 #page{
     padding: 0px;
-    background-color: white;
-    border: solid rgb(113, 180, 235) 1px;
     float: right;
     width: 65%;
 }
@@ -41,11 +40,17 @@ body{
     padding: 10px;
     width: 100%;
     color: rgb(73, 104, 112);
-    margin-bottom: 10px ;
+    margin-bottom: 10px;
 }
 
 .barheader{
-    font-size: 150%;
+    font-size: 135%;
+    font-weight: bold;
+}
+
+.barsubheader{
+    color: rgb(120, 172, 185);
+    font-size: 135%;
     font-weight: bold;
 }
 
@@ -68,7 +73,7 @@ body{
 
 .displayname{
     font-weight: bolder;
-    font-size: 150%;
+    font-size: 135%;
 }
 
 .postimage{
@@ -85,16 +90,8 @@ body{
 }
 
 .timelineheader{
-    font-size: 200%;
+    font-size: 150%;
     font-weight: bold;
-}
-
-#timelineheader{
-    padding: 10px;
-}
-
-.oddpost{
-    background-color: rgb(230, 251, 255);
 }
 
 .displaynamecontainer{
@@ -107,6 +104,7 @@ body{
     padding-left: 60px;
     margin-bottom: 5px;
 }
+
 .profileheader{
     width: 100%;
 }
@@ -125,19 +123,36 @@ body{
     margin-bottom: 10px ;
 }
 
+.box{
+    padding: 10px;
+    background-color: white;
+    border: solid rgb(113, 180, 235) 1px;
+    margin-bottom: 10px;
+}
+
 #signinsubmit{
     display: block;
     margin: 15px auto;
 }
 
 #newposttext{
-    width: 234px;
+    width: 492px;
     background-color: #ffffff;
     border: solid rgb(113, 180, 235) 1px;
 }
 
+#search{
+    margin-bottom: 10px;
+}
+
+#profilepane{
+    background-color: white;
+    margin-bottom: 0px;
+    border-bottom-width: 0px;
+}
+
 #profilepanedisplayname{
-    font-size: 170%;
+    font-size: 150%;
     font-weight: bold;
 }
 
@@ -164,4 +179,32 @@ body{
 #showmore{
     display: block;
     margin: 15px auto;
+}
+
+#navigation{
+    width: 260px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#navigation a{
+    text-decoration: none;
+    color: rgb(73, 104, 112);
+    border: none;
+}
+
+#navigation table{
+    width: 100%;
+}
+
+#navigation td{
+    display: inline-block;
+    padding: 3px;
+    padding-left: 10px;
+}
+
+#navigation .active{
+    color: rgb(21, 44, 54);
+    background-color: white;
+    font-weight: bold;
 }

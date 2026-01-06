@@ -1,10 +1,6 @@
 function htmlpost(postdata, reason, reply) {
     var post = document.createElement("div")
-    post.className = "post oddpost"
-    if (postcount % 2) {
-        post.className = "post"
-    }
-
+    post.className = "post"
     var postheader = document.createElement("table")
     postheader.className = "profileheader"
 
