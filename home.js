@@ -37,7 +37,7 @@ function login() {
         auth = JSON.parse(xhr.responseText)
     }
     catch(error){
-        alert("something has gone Horribly Wrong: " + stringify(error))
+        alert("something has gone Horribly Wrong: " + xhr.responseText)
     }
     
     if (auth.active) {
