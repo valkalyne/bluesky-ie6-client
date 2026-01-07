@@ -8,7 +8,7 @@ body{
 .post{
     background-color: rgb(230, 251, 255);
     padding: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     border: solid rgb(113, 180, 235) 1px;
 }
 
@@ -19,8 +19,8 @@ body{
 }
 
 #header{
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 #bar{
@@ -28,8 +28,6 @@ body{
     width: 240px;
     text-align: center;
     display: none;
-    /*IE6 doesnt support this but im keeping it anyway since its better for Every Other Browser*/
-    position: fixed;
     top: 10px;
 }
 
@@ -37,11 +35,23 @@ body{
     text-align: left;
     background-color: rgb(198, 242, 255);
     border: solid rgb(113, 180, 235) 1px;
-    padding: 10px;
+    padding: 8px;
     width: 100%;
     color: rgb(73, 104, 112);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
+
+.barboxheader{
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(113, 180, 235) 1px;
+    padding: 8px;
+    width: 100%;
+    color: rgb(73, 104, 112);
+    margin-bottom: 0px;
+    border-bottom: 0px;
+}
+
 
 .barheader{
     font-size: 135%;
@@ -85,7 +95,7 @@ body{
 #main{
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 8px;
     width: 800px;
 }
 
@@ -120,14 +130,14 @@ body{
 }
 
 #logo{
-    margin-bottom: 10px ;
+    margin-bottom: 0;
 }
 
 .box{
-    padding: 10px;
+    padding: 8px;
     background-color: white;
     border: solid rgb(113, 180, 235) 1px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 #signinsubmit{
@@ -142,13 +152,7 @@ body{
 }
 
 #search{
-    margin-bottom: 10px;
-}
-
-#profilepane{
-    background-color: white;
-    margin-bottom: 0px;
-    border-bottom-width: 0px;
+    margin-bottom: 8px;
 }
 
 #profilepanedisplayname{
@@ -172,7 +176,7 @@ body{
 
 #showmoreparent{
     background-color: white;
-    padding: 10px;
+    padding: 8px;
     border-top: solid 1px rgb(213, 232, 248);
 }
 
@@ -182,9 +186,11 @@ body{
 }
 
 #navigation{
-    width: 260px;
+    width: 256px;
     padding-left: 0px;
     padding-right: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 #navigation a{
@@ -207,4 +213,10 @@ body{
     color: rgb(21, 44, 54);
     background-color: white;
     font-weight: bold;
+}
+
+ul{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
 }

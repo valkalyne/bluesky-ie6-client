@@ -1,4 +1,3 @@
-var postcount = 0
 var feed
 var parsedfeed
 var auth
@@ -167,19 +166,17 @@ function refreshtimeline(){
         xhr.setRequestHeader("Pragma", "no-cache")
     }
     else {
-        //xhr.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit="+feedlength+"&lang=en", false)
-        xhr.open("GET", "stupid.json", false)
+        xhr.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit="+feedlength+"&lang=en", false)
+        //xhr.open("GET", "stupid.json", false)
         xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
     }
     xhr.send(null);
     feed = xhr.responseText
     parsedfeed = JSON.parse(feed)
     cursor = parsedfeed.cursor
-    postcount = 0
     document.getElementById("timeline").innerHTML = ""
     for (var i in parsedfeed.feed) {
         htmlpost(parsedfeed.feed[i].post,parsedfeed.feed[i].reason,parsedfeed.feed[i].reply)
-        postcount += 1
     }
 }
 
@@ -198,8 +195,8 @@ function ShowMore(){
             xhr.setRequestHeader("Pragma", "no-cache")
         }
         else {
-            //xhr.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit="+feedlength+"&lang=en&cursor="+cursor, false)
-            xhr.open("GET", "stupid.json", false)
+            xhr.open("GET", "https://public.api.bsky.app/xrpc/app.bsky.feed.getFeed?feed=at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot&limit="+feedlength+"&lang=en&cursor="+cursor, false)
+            //xhr.open("GET", "stupid.json", false)
             xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
         }
         xhr.send(null);
@@ -208,7 +205,6 @@ function ShowMore(){
         cursor = parsedfeed.cursor
         for (var i in parsedfeed.feed) {
             htmlpost(parsedfeed.feed[i].post,parsedfeed.feed[i].reason,parsedfeed.feed[i].reply)
-            postcount += 1
         }
     }
     else {

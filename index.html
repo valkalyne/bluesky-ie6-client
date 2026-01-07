@@ -21,7 +21,7 @@
             </form>
 
             <div id="signedout">
-                <div class="barbox signedout" id="signinpane">
+                <div class="barboxheader signedout" id="signinpane">
                     <span class="barheader">Sign in to Bluesky</span>
                     <br>
                     <label>Join the conversation</label>
@@ -51,7 +51,7 @@
             </div>
 
             <div id="signedin">
-                <div class="barbox signedin" id="profilepane">
+                <div class="barboxheader signedin" id="profilepane">
                     <table>
                         <tr>
                             <td>
@@ -91,18 +91,27 @@
                         </tr>
                     </table>
                 </div>
-                <div class="barbox signedin">
+                <div class="barboxheader signedin">
                     <span class="barheader">Following</span>
                     <span id="followingcount" class="barsubheader">...</span>
+                </div>
+                <div class="barbox signedin">
+                    meow
                 </div>
                 <div class="barbox signedin">
                     <span class="barheader">Followers</span>
                     <span id="followercount" class="barsubheader">...</span>
                 </div>
+
+                <div class="barboxheader signedin">
+                    <span class="barheader">Trending</span>
+                </div>
+                <div class="barbox signedin">
+                    <ul id="trendlinks">
+                    </ul>
+                </div>
             </div>
-
             <p>more like copygay info</p>
-
         </div>
         
         <div id='page'>
